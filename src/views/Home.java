@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
+
 public class Home {
 
 	public Home() {
@@ -30,7 +31,7 @@ public class Home {
 		funcoes.put(5, "Transfererir");
 
 		funcoesPtr.put(0, Home::telaDespedida);
-		funcoesPtr.put(1, Home::telaDespedida);
+		funcoesPtr.put(1, ContaBancariaCLI::telaCadastrar);
 		funcoesPtr.put(2, Home::telaDespedida);
 		funcoesPtr.put(3, Home::telaDespedida);
 		funcoesPtr.put(4, Home::telaDespedida);
