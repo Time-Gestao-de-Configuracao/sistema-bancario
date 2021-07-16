@@ -3,11 +3,11 @@ package views;
 import java.util.Scanner;
 
 import controllers.ContaBancariaService;
+import dao.ContaBancariaDAO;
 
 public final class ContaBancariaCLI {
 	
 	private static ContaBancariaService  contaBancariaService = new ContaBancariaService();
-	
 	public ContaBancariaCLI() {
 		contaBancariaService = new ContaBancariaService();
 	}
@@ -36,5 +36,46 @@ public final class ContaBancariaCLI {
 		}
 		
 	}
+	public static void telaConsulta(int n) {
+		System.out.println("===== Consultar saldo da Conta Bancária =====");
+		int valido = 0;
+		do {
+			System.out.println("Digite seu Identificador: ");
+			try {
+				Scanner input = new Scanner(System.in);
+				n = Integer.parseInt(input.nextLine());
+				System.out.println("Olá, seu saldo é: " + contaBancariaService.consultarSaldo(n));
+				valido = 1;
+			} catch (Exception e) {
+				System.out.println ("Não foi possível encontrar conta com esse ID, digite um parâmetro valido");
+			}
+		}  while (valido != 1);
+		
+	}
+	public static void telaCreditar (int n) {
+		System.out.println ("Adicionando valor a conta");
+		int valido = 0;
+		Double valor = contaBancariaService.consultarSaldo(n);
+		do {
+			try {
+				System.out.println ("Digite o identificador");
+				Scanner input = new Scanner(System.in);
+				n = Integer.parseInt(input.nextLine());
+				
+				if (valor != null) {
+					System.out.println("Digite o valor a ser depositado:");
+					valor += Double.parseDouble(input.nextLine());
+					contaBancariaService.creditarConta(n, valor);
+					valido = 1;
+				}
+				valido = 1;
+
+			} catch (Exception e) {
+				System.out.println ("o id não existe");
+			}
+		} while (valido != 1);
+		
+	}
+	
 
 }
