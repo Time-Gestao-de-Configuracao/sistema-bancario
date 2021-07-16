@@ -22,5 +22,10 @@ public class ContaBancariaService {
 		}
 		return 0;
 	}
+	
+	public Double consultarSaldo (int numeroIdentificador) {
+				
+		return contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
+	}
 
 }
