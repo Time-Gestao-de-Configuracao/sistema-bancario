@@ -40,14 +40,14 @@ public final class ContaBancariaCLI {
 		System.out.println("===== Consultar saldo da Conta Bancária =====");
 		int valido = 0;
 		do {
-			System.out.println("Digite seu Identificador: ");
+			System.out.println("Digite seu Identificador da conta: ");
 			try {
 				Scanner input = new Scanner(System.in);
 				n = Integer.parseInt(input.nextLine());
 				System.out.println("Olá, seu saldo é: " + contaBancariaService.consultarSaldo(n));
 				valido = 1;
 			} catch (Exception e) {
-				System.out.println ("Não foi possível encontrar conta com esse ID, digite um parâmetro valido");
+				System.out.println ("Não foi possível encontrar conta com esse ID, digite um parâmetro valido!");
 			}
 		}  while (valido != 1);
 		
