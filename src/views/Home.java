@@ -33,7 +33,7 @@ public class Home {
 		funcoesPtr.put(0, Home::telaDespedida);
 		funcoesPtr.put(1, ContaBancariaCLI::telaCadastrar);
 		funcoesPtr.put(2, ContaBancariaCLI::telaConsulta);
-		funcoesPtr.put(3, Home::telaDespedida);
+		funcoesPtr.put(3, ContaBancariaCLI::telaCreditar);
 		funcoesPtr.put(4, Home::telaDespedida);
 		funcoesPtr.put(5, Home::telaDespedida);
 
