@@ -79,26 +79,27 @@ public final class ContaBancariaCLI {
 	public static void telaDebitar (int n) {
 		System.out.println ("Debitando valor da conta");
 		int valido = 0;
-		Double valor = contaBancariaService.consultarSaldo(n);
+		Double valor = 0.0;
 		do {
 			try {
 				System.out.println ("Digite o identificador");
 				Scanner input = new Scanner(System.in);
 				n = Integer.parseInt(input.nextLine());
-				
-				if (valor != null) {
-					System.out.println("Digite o valor a ser debitado:");
-					valor -= Double.parseDouble(input.nextLine());
-					contaBancariaService.debitarConta(n, valor);
-					valido = 1;
-				}
+				System.out.println("Digite o valor a ser debitado:");
+				valor = Double.parseDouble(input.nextLine());
 				valido = 1;
 
 			} catch (Exception e) {
-				System.out.println ("o id não existe");
+				System.out.println ("erro nos parâmetros digitados");
 			}
+			
 		} while (valido != 1);
-	
+		if (!contaBancariaService.debitarConta(n, valor)) {
+			System.out.println("valores informados incorretos");
+		} else {
+			System.out.println("Débito feito com sucesso");
+		}
+		
 	}
 	
 }

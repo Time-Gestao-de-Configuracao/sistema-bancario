@@ -32,8 +32,15 @@ public class ContaBancariaService {
 		contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(saldo);
 	}
 
-	public void debitarConta (int numeroIdentificador, Double saldo) {
-		contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(saldo);
+	public boolean debitarConta (int numeroIdentificador, Double saldo) {
+		//
+		Double valor = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
+		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null || saldo >= valor ) {
+			return false;
+		} else {
+			contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(valor-saldo);
+		}
+		return true;
 	}
 	
 }
