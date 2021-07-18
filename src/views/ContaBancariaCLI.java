@@ -68,6 +68,7 @@ public final class ContaBancariaCLI {
 			} catch (Exception e) {
 				System.out.println ("erro nos parâmetros digitados");
 			}
+<<<<<<< HEAD
 
 		} while (valido != 1);
 		if (!contaBancariaService.creditarConta(n, valor)) {
@@ -76,6 +77,8 @@ public final class ContaBancariaCLI {
 			System.out.println("Crédito feito com sucesso");
 
 		
+=======
+>>>>>>> a25b37980d6c39b8119bc88a25f3fe209d2a8d61
 			
 		} while (valido != 1);
 
