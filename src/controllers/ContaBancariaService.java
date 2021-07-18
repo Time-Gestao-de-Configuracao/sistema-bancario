@@ -28,8 +28,16 @@ public class ContaBancariaService {
 		return contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
 	}
 	
-	public void creditarConta (int numeroIdentificador, Double saldo) {
-		contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(saldo);
+	public boolean creditarConta (int numeroIdentificador, Double saldo) {
+		//
+		
+		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null || saldo <=0) {
+			return false;
+		} else {
+			Double valor = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
+			contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(saldo+valor);
+		}
+		return true;
 	}
 	
 }
