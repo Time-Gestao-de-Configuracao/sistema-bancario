@@ -70,13 +70,34 @@ public final class ContaBancariaCLI {
 			}
 			
 		} while (valido != 1);
-		if (!contaBancariaService.creditarConta(n, valor)) {
+
+	}
+
+	public static void telaDebitar (int n) {
+		System.out.println ("Debitando valor da conta");
+		int valido = 0;
+		Double valor = 0.0;
+		do {
+			try {
+				System.out.println ("Digite o identificador");
+				Scanner input = new Scanner(System.in);
+				n = Integer.parseInt(input.nextLine());
+				System.out.println("Digite o valor a ser debitado:");
+				valor = Double.parseDouble(input.nextLine());
+				valido = 1;
+
+			} catch (Exception e) {
+				System.out.println ("erro nos parâmetros digitados");
+			}
+			
+		} while (valido != 1);
+		if (!contaBancariaService.debitarConta(n, valor)) {
 			System.out.println("valores informados incorretos");
 		} else {
-			System.out.println("Desposito feito com sucesso");
+			System.out.println("Débito feito com sucesso");
+
 		}
 		
 	}
 	
-
 }
