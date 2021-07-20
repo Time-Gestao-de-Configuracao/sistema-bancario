@@ -49,7 +49,7 @@ public class Home {
 				System.out.println("");
 				funcoesPtr.get(opt).accept(1);
 			} catch (Exception e) {
-				System.out.println("Digite um valor válido");
+				System.out.println("Digite uma opcao válido");
 				opt = -1;
 
 			}
