@@ -34,8 +34,8 @@ public final class ContaBancariaCLI {
 		} else {
 			System.out.println("Não foi possível cadastrar pois já existe uma conta com esse número: " + numeroIdentificador);
 		}
-		
 	}
+	
 	public static void telaConsulta(int n) {
 		System.out.println("===== Consultar saldo da Conta Bancária =====");
 		int valido = 0;
@@ -50,8 +50,8 @@ public final class ContaBancariaCLI {
 				System.out.println ("Não foi possível encontrar conta com esse ID, digite um parâmetro valido!");
 			}
 		}  while (valido != 1);
-		
 	}
+
 	public static void telaCreditar (int n) {
 		System.out.println ("Adicionando valor a conta");
 		int valido = 0;
@@ -74,11 +74,8 @@ public final class ContaBancariaCLI {
 			System.out.println("valores informados incorretos");
 		} else {
 			System.out.println("Crédito feito com sucesso");
-
 		
-			
 		} while (valido != 1);
-
 	}
 
 	public static void telaDebitar (int n) {
@@ -100,12 +97,41 @@ public final class ContaBancariaCLI {
 			
 		} while (valido != 1);
 		if (!contaBancariaService.debitarConta(n, valor)) {
-			System.out.println("valores informados incorretos");
+			System.out.println("Valores informados incorretos");
 		} else {
 			System.out.println("Débito feito com sucesso");
-
 		}
-		
 	}
 	
+	public static void telaTransferir (int n) {
+		System.out.println ("Transferindo o valor da conta");
+		int valido = 0;
+		Double valor = 0.0;
+		int m = 0;
+		do {
+			try {
+				System.out.println ("Digite o identificador da conta de origem");
+				Scanner input = new Scanner(System.in);
+				n = Integer.parseInt(input.nextLine());
+				
+				System.out.println ("Digite o identificador da conta de destino");
+				m = Integer.parseInt(input.nextLine());
+				
+				
+				System.out.println("Digite o valor a ser debitado:");
+				valor = Double.parseDouble(input.nextLine());
+				valido = 1;
+
+			} catch (Exception e) {
+				System.out.println ("erro nos parâmetros digitados");
+			}
+			
+		} while (valido != 1);
+
+		if (!contaBancariaService.transferirConta(n, m, valor)) {
+			System.out.println("Valores informados incorretos");
+		} else {
+			System.out.println("Transferência realizada com sucesso!!!");
+		}
+	}
 }
