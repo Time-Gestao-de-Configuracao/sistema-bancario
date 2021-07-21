@@ -30,7 +30,7 @@ public class ContaBancariaService {
 	
 	public boolean creditarConta (int numeroIdentificador, Double saldo) {
 		
-		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null || saldo <=0) {
+		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null) {
 			return false;
 		} else {
 			Double valor = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
@@ -40,23 +40,26 @@ public class ContaBancariaService {
 	}
 
 	public boolean debitarConta (int numeroIdentificador, Double saldo) {
-
-		Double valor = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
-		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null || saldo >= valor ) {
+		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null) {
 			return false;
 		} else {
+			Double valor = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
 			contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo(valor-saldo);
 		}
 		return true;
 	}
 
-	public boolean transferirConta(int origem, int destino, Double saldo) {
-		
+	public int transferirConta(int origem, int destino, Double saldo) {
 		if( debitarConta(origem, saldo) == true) {
-			creditarConta(destino, saldo);
-			return true;
+			boolean response = creditarConta(destino, saldo);
+			if (!response) {
+				creditarConta(origem, saldo);
+				return -1;
+			} else {
+				return 0;
+			}
 		} 
-		return false;
+		return  -2;
 	
 	}
 }
