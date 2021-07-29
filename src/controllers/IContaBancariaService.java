@@ -15,5 +15,7 @@ public interface IContaBancariaService {
 	boolean debitarConta(int numeroIdentificador, Double valor);
 
 	int transferirConta(int origem, int destino, Double saldo);
+	
+	public boolean renderJuros (double taxa, int numeroIdentificador);
 
 }

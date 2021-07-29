@@ -3,6 +3,7 @@ package views;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import controllers.ContaBancariaPoupancaService;
 import controllers.ContaBancariaService;
 import controllers.IContaBancariaService;
 import dao.ContaBancariaDAO;
@@ -10,6 +11,7 @@ import dao.ContaBancariaDAO;
 public final class ContaBancariaCLI {
 
 	private static IContaBancariaService contaBancariaService = new ContaBancariaService();
+	private static IContaBancariaService contaPoupanca = new ContaBancariaPoupancaService();
 
 	public ContaBancariaCLI() {
 		contaBancariaService = new ContaBancariaService();
@@ -26,7 +28,7 @@ public final class ContaBancariaCLI {
 				Scanner input = new Scanner(System.in);
 				System.out.print("[Int] Entre com o Número Identificador: ");
 				numeroIdentificador = Integer.parseInt(input.nextLine());
-				System.out.print("[Int] Entre com o tipo da conta [1] => Conta comum; [2] => Conta Bônus: ");
+				System.out.print("[Int] Entre com o tipo da conta [1] => Conta comum; [2] => Conta Bônus: [3] => Conta Poupanca: ");
 				tipoConta = Integer.parseInt(input.nextLine());
 				aux = 0;
 			} catch (Exception e) {
@@ -154,6 +156,31 @@ public final class ContaBancariaCLI {
 			break;
 		default:
 			System.out.println("Algum erro inesperado aconteceu.");
+		}
+	}
+	public static void telaRender(int n) {
+		System.out.println("===== Render Juros Conta =====");
+		int valido = 0;
+		Double valor = 0.0;
+		int opc = 0;
+		do {
+			try {
+				System.out.print("Digite o identificador: ");
+				Scanner input = new Scanner(System.in);
+				opc = Integer.parseInt(input.nextLine());
+				System.out.print("Digite o valor da taxa de juros: ");
+				valor = Double.parseDouble(input.nextLine());
+				valido = 1;
+
+			} catch (Exception e) {
+				System.out.println("Erro nos parâmetros digitados.");
+			}
+
+		} while (valido != 1);
+		if (!contaBancariaService.renderJuros(valor, opc)) {
+			System.out.println("Não foi possível encontrar conta com esse ID, digite um parâmetro valido!");
+		} else {
+			System.out.println("Juros realizado com sucesso.");
 		}
 	}
 }

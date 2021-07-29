@@ -63,4 +63,10 @@ public class ContaBancariaBonusService implements IContaBancariaService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public boolean renderJuros(double taxa, int numeroIdentificador) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

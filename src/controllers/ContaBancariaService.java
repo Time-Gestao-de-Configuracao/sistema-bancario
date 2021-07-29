@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.ContaBancariaDAO;
 import models.ContaBancaria;
 import models.ContaBancariaBonus;
+import models.ContaPoupanca;
 
 public class ContaBancariaService implements IContaBancariaService {
 
@@ -26,6 +27,9 @@ public class ContaBancariaService implements IContaBancariaService {
 				break;
 			case 2:
 				novaConta = new ContaBancariaBonus();
+				break;
+			case 3:
+				novaConta = new ContaPoupanca();
 				break;
 			default:
 				return -1;
@@ -112,8 +116,18 @@ public class ContaBancariaService implements IContaBancariaService {
 		if(contaBancaria instanceof ContaBancariaBonus) {
 			return new ContaBancariaBonusService();
 		} else {
+			if(contaBancaria instanceof ContaPoupanca) {
+			return new ContaBancariaPoupancaService();
+			
+			}
 			return new ContaBancariaService();
 		}
 		
+	}
+
+	@Override
+	public boolean renderJuros(double taxa, int numeroIdentificador) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
