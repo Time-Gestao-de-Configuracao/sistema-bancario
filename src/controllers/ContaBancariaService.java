@@ -97,8 +97,8 @@ public class ContaBancariaService implements IContaBancariaService {
 	public int transferirConta(int origem, int destino, Double saldo) {
 		ContaBancaria contaBancariaOrigem = contaBancariaDAO.procuraPeloId(origem);
 		ContaBancaria contaBancariaDestino = contaBancariaDAO.procuraPeloId(destino);
-		IContaBancariaService serviceOrigem = getServiceStrategy(contaBancariaOrigem);
-		IContaBancariaService serviceDestino = getServiceStrategy(contaBancariaDestino);
+		IContaBancariaService serviceOrigem = this.getServiceStrategy(contaBancariaOrigem);
+		IContaBancariaService serviceDestino = this.getServiceStrategy(contaBancariaDestino);
 		if (serviceOrigem.debitarConta(origem, saldo) == true) {
 			boolean response = serviceDestino.creditarContaTransferencia(destino, saldo);
 			if (!response) {
