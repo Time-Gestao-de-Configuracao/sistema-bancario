@@ -14,7 +14,7 @@ public class ContaBancariaPoupancaService implements IContaBancariaService {
 	public ContaBancariaPoupancaService( ) {
 		this.contaBancariaDAO = ContaBancariaDAO.getInstance();
 	}
-	
+	//está função não está agindo de forma correta
 	public boolean renderJuros (double taxa, int numeroIdentificador) {
 		ContaBancaria contaBancaria = contaBancariaDAO.procuraPeloId(numeroIdentificador);
 		if (!(contaBancaria instanceof ContaPoupanca) || contaBancaria == null) {
@@ -28,13 +28,13 @@ public class ContaBancariaPoupancaService implements IContaBancariaService {
 	
 	@Override
 	public int cadastrarConta(double saldo, int numeroIdentificador, int tipo) {
-		if (contaBancariaDAO.procuraPeloId(numeroIdentificador) != null) {
-			return -1;
-		}
-		ContaPoupanca contaPoupanca = new ContaPoupanca();
-		contaPoupanca.setNumeroIdentificador(numeroIdentificador);
-		contaPoupanca.setSaldo(saldo);
-		contaBancariaDAO.inserir(contaPoupanca);
+//		if (contaBancariaDAO.procuraPeloId(numeroIdentificador) != null) {
+//			return -1;
+//		}
+//		ContaPoupanca contaPoupanca = new ContaPoupanca();
+//		contaPoupanca.setNumeroIdentificador(numeroIdentificador);
+//		contaPoupanca.setSaldo(saldo);
+//		contaBancariaDAO.inserir(contaPoupanca);
 		return 0;
 	}
 
