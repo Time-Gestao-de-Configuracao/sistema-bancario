@@ -14,15 +14,10 @@ public class ContaBancariaPoupancaService implements IContaBancariaService {
 	public ContaBancariaPoupancaService( ) {
 		this.contaBancariaDAO = ContaBancariaDAO.getInstance();
 	}
+	
 	//está função não está agindo de forma correta
+	@Override
 	public boolean renderJuros (double taxa, int numeroIdentificador) {
-		ContaBancaria contaBancaria = contaBancariaDAO.procuraPeloId(numeroIdentificador);
-		if (!(contaBancaria instanceof ContaPoupanca) || contaBancaria == null) {
-			System.out.println("OBJETO NULO OU DIFERENTE DE C. POUPANCA");
-			return false;
-		}
-		double valor = (((ContaPoupanca) contaBancaria).getSaldo()*taxa)/100;
-		((ContaPoupanca) contaBancaria).setSaldo(valor+contaBancaria.getSaldo());
 		return true;
 	}
 	

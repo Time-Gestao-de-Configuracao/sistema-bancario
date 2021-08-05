@@ -127,7 +127,13 @@ public class ContaBancariaService implements IContaBancariaService {
 
 	@Override
 	public boolean renderJuros(double taxa, int numeroIdentificador) {
-		// TODO Auto-generated method stub
-		return false;
+		ContaBancaria contaBancaria = contaBancariaDAO.procuraPeloId(numeroIdentificador);
+		if (!(contaBancaria instanceof ContaPoupanca) || contaBancaria == null) {
+			return false;
+		}
+		float valor = (float) ((((ContaPoupanca) contaBancaria).getSaldo()*taxa)/100);
+		((ContaPoupanca) contaBancaria).setSaldo(valor+contaBancaria.getSaldo());
+		return true;
+		
 	}
 }
