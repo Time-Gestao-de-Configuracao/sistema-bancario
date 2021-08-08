@@ -1,13 +1,17 @@
 package views;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import controllers.ContaBancariaPoupancaService;
 import controllers.ContaBancariaService;
+import controllers.IContaBancariaService;
 import dao.ContaBancariaDAO;
 
 public final class ContaBancariaCLI {
 
-	private static ContaBancariaService contaBancariaService = new ContaBancariaService();
+	private static IContaBancariaService contaBancariaService = new ContaBancariaService();
+	private static IContaBancariaService contaPoupanca = new ContaBancariaPoupancaService();
 
 	public ContaBancariaCLI() {
 		contaBancariaService = new ContaBancariaService();
@@ -15,6 +19,7 @@ public final class ContaBancariaCLI {
 
 	public static void telaCadastrar(int a) {
 		int numeroIdentificador = 0;
+		int tipoConta = 0;
 		double saldo = 0.0;
 		int aux = -1;
 		System.out.println("===== Cadastrar Conta Bancária =====");
@@ -23,13 +28,15 @@ public final class ContaBancariaCLI {
 				Scanner input = new Scanner(System.in);
 				System.out.print("[Int] Entre com o Número Identificador: ");
 				numeroIdentificador = Integer.parseInt(input.nextLine());
+				System.out.print("[Int] Entre com o tipo da conta [1] => Conta comum; [2] => Conta Bônus: [3] => Conta Poupanca: ");
+				tipoConta = Integer.parseInt(input.nextLine());
 				aux = 0;
 			} catch (Exception e) {
 				System.out.println("\nErro de parâmetros, digite novamente seguindo os tipos\n");
 				aux = -1;
 			}
 		} while (aux != 0);
-		int resultado = contaBancariaService.cadastrarConta(saldo, numeroIdentificador);
+		int resultado = contaBancariaService.cadastrarConta(saldo, numeroIdentificador, tipoConta);
 		if (resultado != -1) {
 			System.out.println("Conta cadastrada com o número " + numeroIdentificador);
 		} else {
@@ -46,7 +53,11 @@ public final class ContaBancariaCLI {
 			try {
 				Scanner input = new Scanner(System.in);
 				n = Integer.parseInt(input.nextLine());
-				System.out.println("Olá, seu saldo é: " + contaBancariaService.consultarSaldo(n));
+				ArrayList<Double> result =  contaBancariaService.consultarSaldo(n);
+				System.out.println("Olá, seu saldo é: " + result.get(0));
+				if (result.size() > 1) {
+					System.out.println("Seu bônus é: " + result.get(1));
+				}
 				valido = 1;
 			} catch (Exception e) {
 				System.out.println("Não foi possível encontrar conta com esse ID, digite um parâmetro valido!");
@@ -145,6 +156,31 @@ public final class ContaBancariaCLI {
 			break;
 		default:
 			System.out.println("Algum erro inesperado aconteceu.");
+		}
+	}
+	public static void telaRender(int n) {
+		System.out.println("===== Render Juros Conta =====");
+		int valido = 0;
+		Double valor = 0.0;
+		int opc = 0;
+		do {
+			try {
+				System.out.print("Digite o identificador: ");
+				Scanner input = new Scanner(System.in);
+				opc = Integer.parseInt(input.nextLine());
+				System.out.print("Digite o valor da taxa de juros: ");
+				valor = Double.parseDouble(input.nextLine());
+				valido = 1;
+
+			} catch (Exception e) {
+				System.out.println("Erro nos parâmetros digitados.");
+			}
+
+		} while (valido != 1);
+		if (!contaBancariaService.renderJuros(valor, opc)) {
+			System.out.println("Não foi possível encontrar conta com esse ID, digite um parâmetro valido para render juros!");
+		} else {
+			System.out.println("Juros realizado com sucesso.");
 		}
 	}
 }

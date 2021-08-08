@@ -29,6 +29,7 @@ public class Home {
 		funcoes.put(3, "Creditar");
 		funcoes.put(4, "Debitar");
 		funcoes.put(5, "Transfererir");
+		funcoes.put(6, "render juros");
 
 		funcoesPtr.put(0, Home::telaDespedida);
 		funcoesPtr.put(1, ContaBancariaCLI::telaCadastrar);
@@ -36,6 +37,7 @@ public class Home {
 		funcoesPtr.put(3, ContaBancariaCLI::telaCreditar);
 		funcoesPtr.put(4, ContaBancariaCLI::telaDebitar);
 		funcoesPtr.put(5, ContaBancariaCLI::telaTransferir);
+		funcoesPtr.put(6, ContaBancariaCLI::telaRender);
 
 		 do{
 			System.out.println("===== Menu Principal =====");
