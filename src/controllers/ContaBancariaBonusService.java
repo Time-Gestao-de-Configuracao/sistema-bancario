@@ -34,7 +34,7 @@ public class ContaBancariaBonusService implements IContaBancariaService{
 		}
 		Double saldo = contaBancaria.getSaldo();
 		int bonus = ((ContaBancariaBonus) contaBancaria).getBonus();
-		int bonusAdd = (int) (valor / 200);
+		int bonusAdd = (int) (valor / 150);
 		contaBancaria.setSaldo(saldo + valor);
 		((ContaBancariaBonus) contaBancaria).setBonus(bonus+bonusAdd);
 		return true;
