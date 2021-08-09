@@ -87,7 +87,11 @@ public class ContaBancariaService implements IContaBancariaService {
 		if (this.contaBancariaDAO.procuraPeloId(numeroIdentificador) == null) {
 			return false;
 		} else {
+			ContaBancaria contaBancaria = contaBancariaDAO.procuraPeloId(numeroIdentificador);
 			Double saldo = contaBancariaDAO.procuraPeloId(numeroIdentificador).getSaldo();
+			if(!(contaBancaria instanceof ContaPoupanca) && (saldo-valor <-1000)){
+				return false;
+			}
 			contaBancariaDAO.procuraPeloId(numeroIdentificador).setSaldo (saldo - valor);
 		}
 		return true;
