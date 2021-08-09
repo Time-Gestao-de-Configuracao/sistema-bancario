@@ -30,6 +30,11 @@ public final class ContaBancariaCLI {
 				numeroIdentificador = Integer.parseInt(input.nextLine());
 				System.out.print("[Int] Entre com o tipo da conta [1] => Conta comum; [2] => Conta Bônus: [3] => Conta Poupanca: ");
 				tipoConta = Integer.parseInt(input.nextLine());
+				if (tipoConta == 3){
+					System.out.print("[Int] Entre com o saldo inicial da conta: ");
+					saldo = Integer.parseInt(input.nextLine());
+				}
+
 				aux = 0;
 			} catch (Exception e) {
 				System.out.println("\nErro de parâmetros, digite novamente seguindo os tipos\n");
