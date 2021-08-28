@@ -8,7 +8,8 @@ on:
     branches: [ developer ]
   pull_request:
     branches: [ developer ]
-
+  workflow_dispatch:
+  
 jobs:
   build:
 
