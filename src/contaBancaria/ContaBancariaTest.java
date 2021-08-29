@@ -22,7 +22,7 @@ class ContaBancariaTest {
 	void testConsultarSaldo() {
 		conta.cadastrarConta(10, 2, 1);
 		ArrayList<Double> saldo = conta.consultarSaldo(2);
-		boolean result = saldo.isEmpty();
+		boolean result = (!saldo.isEmpty());
 
 	}
 
@@ -30,12 +30,15 @@ class ContaBancariaTest {
 	void testCreditarConta() {
 		conta.cadastrarConta(10, 3, 1);
 		ArrayList<Double> saldo = conta.consultarSaldo(3);
-		assertEquals(10, saldo);
+		assertEquals(10, saldo.get(0));
 	}
 
 	@Test
 	void testDebitarConta() {
-		fail("Not yet implemented");
+		conta.cadastrarConta(10, 3, 1);
+		conta.debitarConta(3, 5.0);
+		ArrayList<Double> saldo = conta.consultarSaldo(3);
+		assertEquals(5, saldo.get(0));
 	}
 
 }
