@@ -22,5 +22,5 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Ant
-      run: ant -noinput -buildfile build.xml
+    - name: Build with Command Line
+      run: javac -classpath . src/Main.java
