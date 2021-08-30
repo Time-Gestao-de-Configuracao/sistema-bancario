@@ -23,4 +23,6 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
     - name: Build with Command Line
-      run: javac -classpath .src/ src/Main.java
+      run: javac src\*.java src\models\*.java src\dao\*.java  src\views\*.java src\controllers\*.java
+
+
