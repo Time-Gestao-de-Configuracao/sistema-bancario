@@ -1,8 +1,8 @@
-package dao;
+package sistema.bancario.src.dao;
 
 import java.util.ArrayList;
 
-import models.ContaBancaria;
+import sistema.bancario.src.models.ContaBancaria;
 
 public final class ContaBancariaDAO {
 	

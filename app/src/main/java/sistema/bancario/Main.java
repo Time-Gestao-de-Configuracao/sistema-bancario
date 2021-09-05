@@ -1,4 +1,6 @@
-import views.Home;
+package sistema.bancario;
+
+import sistema.bancario.src.views.Home;
 
 public class Main {
 

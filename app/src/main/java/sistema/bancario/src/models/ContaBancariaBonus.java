@@ -1,4 +1,4 @@
-package models;
+package sistema.bancario.src.models;
 
 public class ContaBancariaBonus extends ContaBancaria {
 	

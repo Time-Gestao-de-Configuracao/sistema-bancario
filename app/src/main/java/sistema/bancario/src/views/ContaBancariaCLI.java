@@ -1,12 +1,12 @@
-package views;
+package sistema.bancario.src.views;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import controllers.ContaBancariaPoupancaService;
-import controllers.ContaBancariaService;
-import controllers.IContaBancariaService;
-import dao.ContaBancariaDAO;
+import sistema.bancario.src.controllers.ContaBancariaPoupancaService;
+import sistema.bancario.src.controllers.ContaBancariaService;
+import sistema.bancario.src.controllers.IContaBancariaService;
+import sistema.bancario.src.dao.ContaBancariaDAO;
 
 public final class ContaBancariaCLI {
 
