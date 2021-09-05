@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static voida main(String[] args) {
+	public static void main(String[] args) {
 		System.out.print("//=== Bem-vindo ao Sistema Bancário! ===//\n\n");
 		Home.telaInicial(1);
 
