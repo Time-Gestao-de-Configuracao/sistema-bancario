@@ -32,3 +32,7 @@ jobs:
       run: gradle build
     - name: Test with Gradle
       run: gradle test
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1.6
+      with:
+        projectBaseDir: ./
