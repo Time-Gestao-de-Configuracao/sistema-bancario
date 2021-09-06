@@ -5,9 +5,9 @@ name: Java CI
 
 on:
   push:
-    branches: [ feature/runs_with_gradle ]
+    branches: [ feature/runs_with_gradle]
   pull_request:
-    branches: [ feature/runs_with_gradle ]
+    branches: [ feature/runs_with_gradle]
   workflow_dispatch:
   
 jobs:
