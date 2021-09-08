@@ -34,6 +34,7 @@ jobs:
       run: gradle test
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1.6
+        sonar-scanner -Dsonar.projectKey=develop
       with:
         projectBaseDir: ./
       env:
