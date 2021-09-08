@@ -33,10 +33,11 @@ jobs:
     - name: Test with Gradle
       run: gradle test
     - name: SonarCloud Scan
+        sonar-scanner -Dsonar.projectKey=developer
       uses: SonarSource/sonarcloud-github-action@v1.6
-        sonar-scanner -Dsonar.projectKey=develop
       with:
         projectBaseDir: ./
       env:
+        
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
