@@ -22,7 +22,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        - name: Build with Gradle
+    - name: Build with Gradle
       run: gradle build
     
     - name: Test with Gradle
