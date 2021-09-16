@@ -15,7 +15,7 @@ class ContaBancariaTest {
 	void testCadastrarConta() {
 		//ContaBancariaService conta = new ContaBancariaService();
 		int res = conta.cadastrarConta(10, 1, 1);
-		assertEquals(0, res);
+		assertEquals(1, res);
 	}
 
 	@Test
