@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		System.out.print("//=== Bem-vindo ao Sistema Bancário! ===//\n\n");
-		Home.telaInicial(1);
+		Home.telaInicial(1);//
 
 	}
 
