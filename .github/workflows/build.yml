@@ -5,15 +5,18 @@ name: Java  CI
 
 on:
   push:
-    branches: [ developer ]
+    branches: [ feature/runs_with_gradle]
   pull_request:
-    branches: [ developer ]
+    branches: [ feature/runs_with_gradle]
   workflow_dispatch:
   
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
     - uses: actions/checkout@v2
@@ -22,7 +25,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Command Line
-      run: javac -classpath src/. src/*.java src/models/*.java src/dao/*.java  src/views/*.java src/controllers/*.java
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-
+    - name: Build with Gradle
+      run: gradle build
+    - name: Test with Gradle
+      run: gradle test

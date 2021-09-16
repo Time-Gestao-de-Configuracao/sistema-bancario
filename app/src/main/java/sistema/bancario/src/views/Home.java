@@ -1,4 +1,4 @@
-package views;
+package sistema.bancario.src.views;
 
 import java.util.HashMap;
 import java.util.Scanner;

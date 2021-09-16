@@ -1,10 +1,10 @@
-package controllers;
+package sistema.bancario.src.controllers;
 
 import java.util.ArrayList;
 
-import dao.ContaBancariaDAO;
-import models.ContaBancaria;
-import models.ContaBancariaBonus;
+import sistema.bancario.src.dao.ContaBancariaDAO;
+import sistema.bancario.src.models.ContaBancaria;
+import sistema.bancario.src.models.ContaBancariaBonus;
 
 public class ContaBancariaBonusService implements IContaBancariaService{
 
