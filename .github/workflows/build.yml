@@ -28,8 +28,7 @@ jobs:
     - name: Build with Command Line
       run: javac -classpath src/. src/*.java src/models/*.java src/dao/*.java  src/views/*.java src/controllers/*.java
 
-    - name: Test with Gradle
-      run: gradle test
+
     
 
   release:
