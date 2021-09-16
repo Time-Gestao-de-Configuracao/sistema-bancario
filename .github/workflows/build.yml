@@ -24,12 +24,11 @@ jobs:
         distribution: 'adopt'
     - name: Build with Gradle
       run: gradle build
-    
-    - name: Test with Gradle
-      run: gradle test
       
     - name: Build with Command Line
       run: javac -classpath src/. src/*.java src/models/*.java src/dao/*.java  src/views/*.java src/controllers/*.java
+    - name: Test with Gradle
+      run: gradle test
 
   release:
     # The type of runner that the job will run on
